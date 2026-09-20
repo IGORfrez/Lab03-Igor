@@ -108,35 +108,58 @@
 
 // Console.WriteLine($"Число {number} чётное: {isEven}");
 
-int x = 5;
-int y = 5;
+// int x = 5;
+// int y = 5;
 
-// Постфиксный инкремент: сначала используется старое значение, потом увеличивается
-int resultPost = x++; 
-Console.WriteLine($"x++ вернул: {resultPost}, теперь x = {x}"); 
-// Вывод: x++ вернул: 5, теперь x = 6
+// // Постфиксный инкремент: сначала используется старое значение, потом увеличивается
+// int resultPost = x++; 
+// Console.WriteLine($"x++ вернул: {resultPost}, теперь x = {x}"); 
+// // Вывод: x++ вернул: 5, теперь x = 6
 
-// Префиксный инкремент: сначала увеличивается, потом используется новое значение
-int resultPre = ++y;
-Console.WriteLine($"{++y} вернул: {resultPre}, теперь y = {y}"); 
-// Осторожно: тут ++y уже второй раз, чтобы показать поведение. Лучше так:
+// // Префиксный инкремент: сначала увеличивается, потом используется новое значение
+// int resultPre = ++y;
+// Console.WriteLine($"{++y} вернул: {resultPre}, теперь y = {y}"); 
+// // Осторожно: тут ++y уже второй раз, чтобы показать поведение. Лучше так:
 
-// Более чистый пример:
-int a = 10;
-int b = 10;
+// // Более чистый пример:
+// int a = 10;
+// int b = 10;
 
-int post = a++; // post = 10, a = 11
-int pre = ++b;  // b = 11, pre = 11
+// int post = a++; // post = 10, a = 11
+// int pre = ++b;  // b = 11, pre = 11
 
-Console.WriteLine($"a++: post={post}, a={a}");
-Console.WriteLine($"++b: pre={pre}, b={b}");
+// Console.WriteLine($"a++: post={post}, a={a}");
+// Console.WriteLine($"++b: pre={pre}, b={b}");
 
-// Пример в выражении:
-int c = 3;
-int d = 3;
+// // Пример в выражении:
+// int c = 3;
+// int d = 3;
 
-int exprPost = 10 + c++; // 10 + 3 = 13, c станет 4
-int exprPre = 10 + ++d;  // d станет 4, потом 10 + 4 = 14
+// int exprPost = 10 + c++; // 10 + 3 = 13, c станет 4
+// int exprPre = 10 + ++d;  // d станет 4, потом 10 + 4 = 14
 
-Console.WriteLine($"10 + c++ = {exprPost}, c={c}");
-Console.WriteLine($"10 + ++d = {exprPre}, d={d}");
+// Console.WriteLine($"10 + c++ = {exprPost}, c={c}");
+// Console.WriteLine($"10 + ++d = {exprPre}, d={d}");
+
+Console.Write("Введите сумму покупки (руб.): ");
+double totalAmount = double.Parse(Console.ReadLine());
+
+Console.Write("Есть карта клиента? (1 - да, 0 - нет): ");
+int hasCardInput = int.Parse(Console.ReadLine());
+bool hasCard = (hasCardInput == 1);
+
+Console.Write("Количество товаров: ");
+int itemCount = int.Parse(Console.ReadLine());
+
+// Промежуточные условия
+bool highAmount = totalAmount >= 5000;
+bool manyItems = itemCount >= 10;
+
+bool eligibleForDiscount = (highAmount && hasCard) || manyItems;
+
+Console.WriteLine();
+Console.WriteLine("Промежуточные условия:");
+Console.WriteLine($"Сумма >= 5000: {highAmount}");
+Console.WriteLine($"Есть карта: {hasCard}");
+Console.WriteLine($"Количество товаров >= 10: {manyItems}");
+Console.WriteLine($"Скидка применима: {eligibleForDiscount}");
