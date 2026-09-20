@@ -101,9 +101,42 @@
 // Console.WriteLine($"Проходит по правилам: {isEligibleByRules}");
 // Console.WriteLine($"Итоговый балл: {totalScore}");
 
-Console.Write("Введите целое число: ");
-int number = int.Parse(Console.ReadLine());
+// Console.Write("Введите целое число: ");
+// int number = int.Parse(Console.ReadLine());
 
-bool isEven = (number % 2) == 0;
+// bool isEven = (number % 2) == 0;
 
-Console.WriteLine($"Число {number} чётное: {isEven}");
+// Console.WriteLine($"Число {number} чётное: {isEven}");
+
+int x = 5;
+int y = 5;
+
+// Постфиксный инкремент: сначала используется старое значение, потом увеличивается
+int resultPost = x++; 
+Console.WriteLine($"x++ вернул: {resultPost}, теперь x = {x}"); 
+// Вывод: x++ вернул: 5, теперь x = 6
+
+// Префиксный инкремент: сначала увеличивается, потом используется новое значение
+int resultPre = ++y;
+Console.WriteLine($"{++y} вернул: {resultPre}, теперь y = {y}"); 
+// Осторожно: тут ++y уже второй раз, чтобы показать поведение. Лучше так:
+
+// Более чистый пример:
+int a = 10;
+int b = 10;
+
+int post = a++; // post = 10, a = 11
+int pre = ++b;  // b = 11, pre = 11
+
+Console.WriteLine($"a++: post={post}, a={a}");
+Console.WriteLine($"++b: pre={pre}, b={b}");
+
+// Пример в выражении:
+int c = 3;
+int d = 3;
+
+int exprPost = 10 + c++; // 10 + 3 = 13, c станет 4
+int exprPre = 10 + ++d;  // d станет 4, потом 10 + 4 = 14
+
+Console.WriteLine($"10 + c++ = {exprPost}, c={c}");
+Console.WriteLine($"10 + ++d = {exprPre}, d={d}");
